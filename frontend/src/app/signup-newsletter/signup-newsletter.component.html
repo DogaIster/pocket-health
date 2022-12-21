@@ -1,0 +1,81 @@
+<form [formGroup]="customerInformationForm" class="form">
+  <h3>Read the latest updates from PocketHealth</h3>
+  <!--Name-->
+  <mat-form-field class="form-element">
+    <input matInput type="text" placeholder="Name" formControlName="name">
+    <mat-error>
+      <small *ngIf="customerInformationForm.controls['name'].hasError('required')">
+        This field is required.
+      </small>
+      <small *ngIf="customerInformationForm.controls['name'].hasError('minlength')">
+        The minimum length for this field is 2 characters.
+      </small>
+      <small *ngIf="customerInformationForm.controls['name'].hasError('maxlength')">
+        The maximum length for this field is 30 characters.
+      </small>
+      <small *ngIf="customerInformationForm.controls['name'].hasError('pattern')">
+        Name can only include letters.
+      </small>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <!--E-mail Address-->
+  <mat-form-field class="form-element">
+    <input matInput type="email" placeholder="E-mail Address" formControlName="email">
+    <mat-error>
+      <small *ngIf="customerInformationForm.controls['email'].hasError('required')">
+        E-mail is required.
+      </small>
+      <small *ngIf="!customerInformationForm.controls['email'].hasError('pattern') &&
+                    customerInformationForm.controls['email'].dirty &&
+                    !customerInformationForm.controls['email'].hasError('required')">
+        E-mail is invalid.
+      </small>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <!--Phone Number-->
+  <mat-form-field class="form-element">
+    <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+    <mat-error>
+      <small *ngIf="customerInformationForm.controls['phoneNumber'].hasError('required')">
+        Phone number is required.
+      </small>
+      <small *ngIf="customerInformationForm.controls['phoneNumber'].hasError('minlength')">
+        Phone number should be 10 characters long.
+      </small>
+      <small *ngIf="customerInformationForm.controls['phoneNumber'].hasError('maxlength')">
+        Phone number cannot be longer than 10 characters long.
+      </small>
+      <small *ngIf="customerInformationForm.controls['phoneNumber'].hasError('pattern')">
+        Phone number can only include numbers.
+      </small>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <!--Colour-->
+  <mat-form-field class="form-element">
+    <input matInput type="text" placeholder="Favorite Colour" formControlName="colour">
+    <mat-error>
+      <small *ngIf="customerInformationForm.controls['colour'].hasError('minlength')">
+        The shortest color is 3 characters long.
+      </small>
+      <small *ngIf="customerInformationForm.controls['colour'].hasError('pattern')">
+        Color can only include letters.
+      </small>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="form-element">
+    <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!customerInformationForm.valid"
+            (click)="onSubmit()">Submit Form
+    </button>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+  </div>
+</form>
