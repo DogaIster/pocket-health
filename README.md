@@ -8,7 +8,7 @@ After submitting the form if you inspect go to the network tab you can see we ma
 
 ## Frontend
 
-This app is written in Angular v14.2.0
+This app is written in Angular v14.2.10
 
 Frontend includes 2 components; home and sign up newsletter.
 Home page looks like how it looks like in the golang app, it has a subscribe button that opens a popup window to sign up to the newsletter. The form on the popup page has sanitization check in all the fields. It will warn you about required fields and what those fields accept.
